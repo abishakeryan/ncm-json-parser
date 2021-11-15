@@ -12,7 +12,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class NCMTemplateDetailParser {
-
+//Get API response using FetchTemplateDetails.sh
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {

@@ -9,7 +9,7 @@ import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class TemplateListParser {
-
+//Fetch API response from OPM NCM Device Template List
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		try {
