@@ -21,15 +21,17 @@ public class NCMRestoreBackupAvailability {
 	public static final String BACKUP_STARTUP_CONFIG = "Backup Startup Configuration";
 	public static final String RESTORE_RUNNING_CONFIG = "Upload Running Configuration";
 	public static final String RESTORE_STARTUP_CONFIG = "Upload Startup Configuration";
+	public static final String STARTUP_CONFIG = "startup_config";
+	public static final String RUNNING_CONFIG = "running_config";
 	
 	public static final Map<String, String> BACKUP_OPERATIONS_MAP = new HashMap<String, String>() {{
-		put(BACKUP_RUNNING_CONFIG,"running_config");
-		put(BACKUP_STARTUP_CONFIG,"startup_config");
+		put(BACKUP_RUNNING_CONFIG, RUNNING_CONFIG);
+		put(BACKUP_STARTUP_CONFIG, STARTUP_CONFIG);
 	}};
 	
 	public static final Map<String, String> RESTORE_OPERATIONS_MAP = new HashMap<String, String>() {{
-		put(RESTORE_RUNNING_CONFIG,"running_config");
-		put(RESTORE_STARTUP_CONFIG,"startup_config");
+		put(RESTORE_RUNNING_CONFIG, RUNNING_CONFIG);
+		put(RESTORE_STARTUP_CONFIG, STARTUP_CONFIG);
 	}};
 
 	public static void main(String[] args) {
