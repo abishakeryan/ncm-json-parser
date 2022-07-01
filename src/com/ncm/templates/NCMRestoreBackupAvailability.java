@@ -17,17 +17,17 @@ import org.json.JSONObject;
 
 public class NCMRestoreBackupAvailability {
 	
-	public static final String BACKUP_RUNNING_CONFIG = "Backup Running Configuration";
-	public static final String BACKUP_STARTUP_CONFIG = "Backup Startup Configuration";
+	//public static final String BACKUP_RUNNING_CONFIG = "Backup Running Configuration";
+	//public static final String BACKUP_STARTUP_CONFIG = "Backup Startup Configuration";
 	public static final String RESTORE_RUNNING_CONFIG = "Upload Running Configuration";
 	public static final String RESTORE_STARTUP_CONFIG = "Upload Startup Configuration";
 	public static final String STARTUP_CONFIG = "startup_config";
 	public static final String RUNNING_CONFIG = "running_config";
 	
-	public static final Map<String, String> BACKUP_OPERATIONS_MAP = new HashMap<String, String>() {{
+	/*public static final Map<String, String> BACKUP_OPERATIONS_MAP = new HashMap<String, String>() {{
 		put(BACKUP_RUNNING_CONFIG, RUNNING_CONFIG);
 		put(BACKUP_STARTUP_CONFIG, STARTUP_CONFIG);
-	}};
+	}};*/
 	
 	public static final Map<String, String> RESTORE_OPERATIONS_MAP = new HashMap<String, String>() {{
 		put(RESTORE_RUNNING_CONFIG, RUNNING_CONFIG);
@@ -50,7 +50,7 @@ public class NCMRestoreBackupAvailability {
 				JSONObject ncmTemplate = ncmTemplateList.getJSONObject(i);
 				JSONObject commandObject = ncmTemplate.getJSONObject("command");
 				Iterator<String> protocolItr = commandObject.keys();
-				JSONObject backupProtocolAvailOperations = new JSONObject();
+				//JSONObject backupProtocolAvailOperations = new JSONObject();
 				JSONObject restoreProtocolAvailOperations = new JSONObject();
 				//iterating over each available protocols
 				while(protocolItr.hasNext()) {
@@ -58,27 +58,27 @@ public class NCMRestoreBackupAvailability {
 					JSONObject operationsObject = commandObject.getJSONObject(protocol);
 					Set<String> operationSet = operationsObject.keySet();
 					JSONArray availableRestoreOperations = new JSONArray();
-					JSONArray availableBackupOperations = new JSONArray();
+					//JSONArray availableBackupOperations = new JSONArray();
 					//iterating over each operations (backup, restore, sync, get hardware details
 					for(String operation : operationSet) {
 						if(RESTORE_OPERATIONS_MAP.containsKey(operation)) {
 							availableRestoreOperations.put(RESTORE_OPERATIONS_MAP.get(operation));
 						}
-						if(BACKUP_OPERATIONS_MAP.containsKey(operation)) {
+						/*if(BACKUP_OPERATIONS_MAP.containsKey(operation)) {
 							availableBackupOperations.put(BACKUP_OPERATIONS_MAP.get(operation));
-						}
+						}*/
 					}
 					
-					if(availableBackupOperations.length() > 0) {
+					/*if(availableBackupOperations.length() > 0) {
 						backupProtocolAvailOperations.put(protocol, availableBackupOperations);
-					}
+					}*/
 					if(availableRestoreOperations.length() > 0) {
 						restoreProtocolAvailOperations.put(protocol, availableRestoreOperations);
 					}
 				}
-				if(backupProtocolAvailOperations.length() > 0) {
+				/*if(backupProtocolAvailOperations.length() > 0) {
 					ncmTemplate.put("BACKUP", backupProtocolAvailOperations);
-				}
+				}*/
 				if(restoreProtocolAvailOperations.length() > 0) {
 					ncmTemplate.put("RESTORE", restoreProtocolAvailOperations);
 				}
