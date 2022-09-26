@@ -17,7 +17,7 @@ public class TemplateListParse {
 		// TODO Auto-generated method stub
 		ArrayList<JSONObject> retArray = new ArrayList<>();
 		try {
-			File inputFile = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/template_list.json");
+			File inputFile = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/1_Initial_Template/Initial_Template.json");
 			FileInputStream fis = new FileInputStream(inputFile);
 			byte[] inputByteArray = new byte[(int) inputFile.length()];
 			fis.read(inputByteArray);
@@ -54,10 +54,10 @@ public class TemplateListParse {
 			});
 			System.out.println("total input final : " + retArray.size());
 			//System.out.println(retArray);
-			/*File outputFile = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/out_template_list.json");
+			File outputFile = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/1_Initial_Template/template_list.json");
 			FileOutputStream fos = new FileOutputStream(outputFile);
 			fos.write(retArray.toString().getBytes());
-			fos.close();*/
+			fos.close();
 		}
 		catch(Exception e) {
 			e.printStackTrace();

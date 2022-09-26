@@ -15,7 +15,7 @@ public class ProtocolCombinationParser {
 
 	public static void main(String[] args) {
 		try {
-			File templateFile = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/ProtocolCombinations/Template_List/template_list_with_command.json");
+			File templateFile = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/3_ProtocolCombinations/Template_List/template_list_with_command.json");
 			FileInputStream fis = new FileInputStream(templateFile);
 			byte[] readByte = new byte[(int) templateFile.length()];
 			fis.read(readByte);
@@ -28,7 +28,7 @@ public class ProtocolCombinationParser {
 				String id = template.getString("id");
 				List<String> protocolList = new ArrayList<>();
 				
-				File protocolCombFile = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/ProtocolCombinations/" + id + ".txt");
+				File protocolCombFile = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/3_ProtocolCombinations/" + id + ".txt");
 				FileInputStream protocolFis = new FileInputStream(protocolCombFile);
 				byte[] protocolByte = new byte[(int) protocolCombFile.length()];
 				protocolFis.read(protocolByte);
@@ -46,7 +46,7 @@ public class ProtocolCombinationParser {
 				template.put("ProtocolCombination", protocolList.stream().collect(Collectors.joining(",")));
 			}
 			
-			File outFile = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/ProtocolCombinations/Template_List/template_with_protocolCombination.json");
+			File outFile = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/3_ProtocolCombinations/Template_List/template_with_protocolCombination.json");
 			FileOutputStream fos = new FileOutputStream(outFile);
 			fos.write(templateList.toString().getBytes());
 			fos.close();

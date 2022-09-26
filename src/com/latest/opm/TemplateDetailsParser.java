@@ -18,10 +18,12 @@ public class TemplateDetailsParser {
 		put("Upload Running Configuration", "running_config");
 		put("Upload Startup Configuration", "startup_config");
 	}};
+	
+	static List<Integer> missingTemplateIds = new ArrayList<>();
 
 	public static void main(String[] args) {
 		try {
-			File templateInputFile = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/Template_Details/Template_List/template_list.json");
+			File templateInputFile = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/2_Template_Details/Template_List/template_list.json");
 			FileInputStream fis = new FileInputStream(templateInputFile);
 			byte[] inputByteArray = new byte[(int) templateInputFile.length()];
 			fis.read(inputByteArray);
@@ -30,11 +32,14 @@ public class TemplateDetailsParser {
 			for(int i = 0; i < templateList.length(); i++) {
 				JSONObject template = templateList.getJSONObject(i);
 				String id = template.getString("id");
+				if(!String.valueOf(i+1).equals(id)) {
+					missingTemplateIds.add(i+1);
+				}
 				JSONObject templateCmdObj = new JSONObject();
 				template.put("command", templateCmdObj);
 				JSONObject restoreObj = new JSONObject();
 				
-				File templateDetailFile = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/Template_Details/" + id + ".txt");
+				File templateDetailFile = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/2_Template_Details/" + id + ".txt");
 				FileInputStream templateDetailFis = new FileInputStream(templateDetailFile);
 				byte[] templateDetailByteArray = new byte[(int) templateDetailFile.length()];
 				templateDetailFis.read(templateDetailByteArray);
@@ -112,10 +117,12 @@ public class TemplateDetailsParser {
 				}
 			}
 			//System.out.println(templateList.getJSONObject(20));
-			File outputTemplate = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/Template_Details/Template_List/template_list_with_command.json");
+			File outputTemplate = new File("/home/local/ZOHOCORP/abishake-9966/Documents/NCM_Template_Latest_OPM/2_Template_Details/Template_List/template_list_with_command.json");
 			FileOutputStream fos = new FileOutputStream(outputTemplate);
 			fos.write(templateList.toString().getBytes());
 			fos.close();
+			
+			System.out.println(missingTemplateIds);
 		}
 		catch(Exception e) {
 			e.printStackTrace();
