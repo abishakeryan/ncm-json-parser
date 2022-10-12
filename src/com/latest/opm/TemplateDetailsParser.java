@@ -12,6 +12,10 @@ import java.util.HashMap;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+/**
+ * @author abishake-9966
+ * 
+ */
 public class TemplateDetailsParser {
 	
 	static Map<String, String> restoreMap = new HashMap<String, String>() {{
