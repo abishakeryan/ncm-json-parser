@@ -20,4 +20,11 @@
 		<nature>org.eclipse.wst.common.project.facet.core.nature</nature>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>com</name>
+			<type>2</type>
+			<location>/home/local/ZOHOCORP/abishake-9966/CommonJARS/EUM_HttpClient_Jar/com</location>
+		</link>
+	</linkedResources>
 </projectDescription>
